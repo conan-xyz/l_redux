@@ -20,20 +20,20 @@ export const VisibilityFilters = {
 export function addTodo(text) {
     return {
         type: ADD_TODO,
-        text
+        text: text
     }
 }
 
 export function toggleTodo(index) {
     return {
         type: TOGGLE_TODO,
-        index
+        index: index
     }
 }
 
 export function setVisibilityFilter(filter) {
     return {
         type: SET_VISIBILITY_FILTER,
-        filter
+        filter: filter
     }
 }
