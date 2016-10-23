@@ -1,13 +1,28 @@
 import {VisibilityFilters, ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER} from '../actions/index';
 import {combineReducers} from 'redux';
 
+
+//{
+//    visibilityFilter: 'SHOW_ALL',
+//        todos: [
+//          {
+//              text: 'Consider using Redux',
+//              completed: true,
+//          },
+//          {
+//              text: 'Keep all state in a single tree',
+//              completed: false
+//          }
+//        ]
+//}
+
 function todos(state = [], action) {
     switch (action.type) {
         case ADD_TODO:
             return [
                 ...state,
                 {
-                    text: action.type,
+                    text: action.text,
                     completed: false
                 }
             ];

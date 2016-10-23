@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {addTodo, completeTodo, setVisibilityFilter, VisibilityFilters} from '../actions/index';
+import {addTodo, toggleTodo, setVisibilityFilter, VisibilityFilters} from '../actions/index';
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
 import Footer from '../components/Footer';
@@ -16,8 +16,8 @@ class App extends React.Component {
                     }/>
                 <TodoList
                     todos={this.props.visibleTodos}
-                    onTodoClick={todo =>
-                        dispatch(completeTodo(index))
+                    onTodoClick={index =>
+                        dispatch(toggleTodo(index))
                     }/>
                 <Footer
                     filter={visibilityFilter}
@@ -38,9 +38,17 @@ App.propTypes = {
     visibilityFilter: PropTypes.oneOf([
         'SHOW_ALL',
         'SHOW_COMPLETED',
-        'SHOW_ACTIVE',
+        'SHOW_ACTIVE'
     ]).isRequired
 };
+
+
+//export function setVisibilityFilter(filter) {
+//    return {
+//        type: SET_VISIBILITY_FILTER,
+//        filter
+//    }
+//}
 
 function selectTodos(todos, filter) {
     switch (filter) {
@@ -53,8 +61,8 @@ function selectTodos(todos, filter) {
     }
 }
 
-// 基于全局 state ，哪些是我们想注入的 props ?
-// 注意：使用 https://github.com/reactjs/reselect 效果更佳。
+// 基于全局state,哪些是我们想注入的props?
+// 注意:使用 https://github.com/reactjs/reselect效果更佳。
 function select(state) {
     return {
         visibleTodos: selectTodos(state.todos, state.visibilityFilter),
@@ -62,5 +70,5 @@ function select(state) {
     };
 }
 
-// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
+// 包装 component, 注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
 export default connect(select)(App);
