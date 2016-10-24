@@ -3,7 +3,7 @@
  */
 
 export const ADD_TODO = 'ADD_TODO';
-export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const COMPLETE_TODO = 'COMPLETE_TODO';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 
@@ -26,7 +26,7 @@ export function addTodo(text) {
 
 export function toggleTodo(index) {
     return {
-        type: TOGGLE_TODO,
+        type: COMPLETE_TODO,
         index: index
     }
 }
