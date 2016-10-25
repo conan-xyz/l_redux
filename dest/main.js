@@ -76,10 +76,11 @@
 	var store = (0, _redux.createStore)(_index2.default);
 
 	var rootElement = document.getElementById('root');
+
 	(0, _reactDom.render)(_react2.default.createElement(
-	  _reactRedux.Provider,
-	  { store: store },
-	  _react2.default.createElement(_App2.default, null)
+	    _reactRedux.Provider,
+	    { store: store },
+	    _react2.default.createElement(_App2.default, null)
 	), rootElement);
 
 /***/ },
@@ -23211,9 +23212,9 @@
 	                        return dispatch((0, _index.addTodo)(text));
 	                    } }),
 	                _react2.default.createElement(_TodoList2.default, {
-	                    todos: this.props.visibleTodos,
+	                    todos: visibleTodos,
 	                    onTodoClick: function onTodoClick(index) {
-	                        return dispatch((0, _index.toggleTodo)(index));
+	                        return dispatch((0, _index.completeTodo)(index));
 	                    } }),
 	                _react2.default.createElement(_Footer2.default, {
 	                    filter: visibilityFilter,
@@ -23279,14 +23280,14 @@
 	    value: true
 	});
 	exports.addTodo = addTodo;
-	exports.toggleTodo = toggleTodo;
+	exports.completeTodo = completeTodo;
 	exports.setVisibilityFilter = setVisibilityFilter;
 	/*
 	 * action 类型
 	 */
 
 	var ADD_TODO = exports.ADD_TODO = 'ADD_TODO';
-	var TOGGLE_TODO = exports.TOGGLE_TODO = 'TOGGLE_TODO';
+	var COMPLETE_TODO = exports.COMPLETE_TODO = 'COMPLETE_TODO';
 	var SET_VISIBILITY_FILTER = exports.SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 	/*
@@ -23306,9 +23307,9 @@
 	    };
 	}
 
-	function toggleTodo(index) {
+	function completeTodo(index) {
 	    return {
-	        type: TOGGLE_TODO,
+	        type: COMPLETE_TODO,
 	        index: index
 	    };
 	}
@@ -23356,7 +23357,7 @@
 	    _createClass(AddTodo, [{
 	        key: 'handleClick',
 	        value: function handleClick(e) {
-	            var node = (0, _react.findDOMNode)(this.ref.input);
+	            var node = (0, _react.findDOMNode)(this.refs.input);
 	            var text = node.value.trim();
 	            this.props.onAddClick(text);
 	            node.value = '';
@@ -23440,6 +23441,25 @@
 	//    {this.props.text}
 	//</li>
 
+	// export default class Todo extends Component {
+	//     render() {
+	//         return (
+	//             <li onClick={this.props.onClick}
+	//                 style={{
+	//                     textDecoration: this.props.completed ? 'line-through' : 'none',
+	//                     cursor: this.props.completed ? 'default' : 'pointer'
+	//                 }}>
+	//                 {this.props.text}
+	//             </li>
+	//         )
+	//     }
+	// }
+	//
+	// Todo.propTypes = {
+	//     onClick: PropTypes.func.isRequired,
+	//     text: PropTypes.string.isRequired,
+	//     completed: PropTypes.bool.isRequired
+	// };
 
 	var TodoList = function (_Component) {
 	    _inherits(TodoList, _Component);
@@ -23663,14 +23683,15 @@
 	                text: action.text,
 	                completed: false
 	            }]);
-	        case _index.TOGGLE_TODO:
-	            return state.map(function (todo, index) {
-	                if (index === action.index) {
-	                    return Object.assign({}, todo, {
-	                        completed: !todo.completed
-	                    });
-	                }
-	            });
+	        case _index.COMPLETE_TODO:
+	            // return state.map((todo, index) => {
+	            //     if (index === action.index) {
+	            //         return Object.assign({}, todo, {
+	            //             completed: !todo.completed
+	            //         })
+	            //     }
+	            // });
+	            return [].concat(_toConsumableArray(state.slice(0, action.index)), [Object.assign({}, state[action.index], { completed: true })], _toConsumableArray(state.slice(action.index + 1)));
 	        default:
 	            return state;
 	    }

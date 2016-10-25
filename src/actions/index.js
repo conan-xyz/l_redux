@@ -24,7 +24,7 @@ export function addTodo(text) {
     }
 }
 
-export function toggleTodo(index) {
+export function completeTodo(index) {
     return {
         type: COMPLETE_TODO,
         index: index
