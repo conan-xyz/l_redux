@@ -4,12 +4,23 @@ import {addTodo, completeTodo, setVisibilityFilter, VisibilityFilters} from '../
 import AddTodo from '../components/AddTodo';
 import TodoList from '../components/TodoList';
 import Footer from '../components/Footer';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { Button } from 'antd';
+import { DatePicker } from 'antd';
+
 
 class App extends React.Component {
+
+    onChange(date, dateString) {
+        console.log(date, dateString);
+    };
+
     render() {
         const {dispatch, visibleTodos, visibilityFilter} = this.props;
         return (
             <div>
+                <DatePicker onChange={this.onChange} />
+                <Button type="primary">Primary</Button>
                 <AddTodo
                     onAddClick={text =>
                         dispatch(addTodo(text))
@@ -28,7 +39,6 @@ class App extends React.Component {
         );
     }
 }
-
 
 App.propTypes = {
     visibleTodos: PropTypes.arrayOf(PropTypes.shape({

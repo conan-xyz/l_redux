@@ -14,7 +14,6 @@ import {combineReducers} from 'redux';
 //          }
 //        ]
 //}
-
 function todos(state = [], action) {
     switch (action.type) {
         case ADD_TODO:
