@@ -15,25 +15,32 @@
 //     </Provider>,
 //     rootElement
 // )
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { Menu, Breadcrumb, Icon } from 'antd';
-import BrowserDemo from 'site/theme/template/BrowserDemo';
+import 'antd/dist/antd.css';
+import '../static/css/base.css';
+
+const rootElement = document.getElementById('react-content');
 const SubMenu = Menu.SubMenu;
 
-const AsideCollapse = React.createClass({
+const App = React.createClass({
   getInitialState() {
     return {
       collapse: true,
     };
   },
+
   onCollapseChange() {
     this.setState({
       collapse: !this.state.collapse,
     })
   },
+
   render() {
     const collapse = this.state.collapse;
     return (
-      <div className={collapse ? "ant-layout-aside ant-layout-aside-collapse" : "ant-layout-aside"}>
+      <div className={collapse ? "ant-layout-aside ant-layout-aside-collapse page-wrapper" : "ant-layout-aside "}>
         <aside className="ant-layout-sider">
           <div className="ant-layout-logo"></div>
           <Menu mode="inline" theme="dark" defaultSelectedKeys={['user']}>
@@ -68,13 +75,10 @@ const AsideCollapse = React.createClass({
           </div>
           <div className="ant-layout-container">
             <div className="ant-layout-content">
-              <div style={{ height: 220 }}>
+              <div>
                 内容区域
               </div>
             </div>
-          </div>
-          <div className="ant-layout-footer">
-          Ant Design 版权所有 © 2015 由蚂蚁金服体验技术部支持
           </div>
         </div>
       </div>
@@ -82,4 +86,4 @@ const AsideCollapse = React.createClass({
   },
 });
 
-ReactDOM.render(<BrowserDemo><AsideCollapse /></BrowserDemo>, mountNode);
+ReactDOM.render(<App />, rootElement);
