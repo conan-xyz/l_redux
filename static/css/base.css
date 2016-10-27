@@ -2,6 +2,17 @@
   height: 100%;
 }
 
+.ant-layout-aside .custom-image {
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.ant-layout-aside-collapse .custom-image {
+  width: 32px;
+  margin: 16px;
+  transition: all 0.3s ease;
+}
+
 .ant-layout-aside .ant-layout-logo {
   width: 150px;
   height: 32px;
@@ -81,7 +92,7 @@
 .ant-layout-aside .ant-aside-action {
   height: 42px;
   width: 224px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   background: #656565;
   color: #fff;

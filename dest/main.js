@@ -67,9 +67,13 @@
 
 	__webpack_require__(179);
 
+	var _root = __webpack_require__(181);
+
+	var _root2 = _interopRequireDefault(_root);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var rootElement = document.getElementById('react-content'); // import React from 'react'
+	// import React from 'react'
 	// import {render} from 'react-dom'
 	// import {createStore} from 'redux'
 	// import {Provider} from 'react-redux'
@@ -86,7 +90,7 @@
 	//     </Provider>,
 	//     rootElement
 	// )
-
+	var rootElement = document.getElementById('react-content');
 	var SubMenu = _antd.Menu.SubMenu;
 
 	var App = _react2.default.createClass({
@@ -105,11 +109,15 @@
 	    var collapse = this.state.collapse;
 	    return _react2.default.createElement(
 	      'div',
-	      { className: collapse ? "ant-layout-aside ant-layout-aside-collapse page-wrapper" : "ant-layout-aside " },
+	      { className: collapse ? "ant-layout-aside ant-layout-aside-collapse" : "ant-layout-aside " },
 	      _react2.default.createElement(
 	        'aside',
 	        { className: 'ant-layout-sider' },
-	        _react2.default.createElement('div', { className: 'ant-layout-logo' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'custom-image' },
+	          _react2.default.createElement('img', { alt: 'image', width: '48', height: '48', src: _root2.default })
+	        ),
 	        _react2.default.createElement(
 	          _antd.Menu,
 	          { mode: 'inline', theme: 'dark', defaultSelectedKeys: ['user'] },
@@ -126,7 +134,7 @@
 	          _react2.default.createElement(
 	            _antd.Menu.Item,
 	            { key: 'setting' },
-	            _react2.default.createElement(_antd.Icon, { type: 'setting' }),
+	            _react2.default.createElement(_antd.Icon, { type: 'setting', spin: 'true' }),
 	            _react2.default.createElement(
 	              'span',
 	              { className: 'nav-text' },
@@ -28760,10 +28768,16 @@
 
 
 	// module
-	exports.push([module.id, ".ant-layout-aside {\n  height: 100%;\n}\n\n.ant-layout-aside .ant-layout-logo {\n  width: 150px;\n  height: 32px;\n  background: #333;\n  border-radius: 6px;\n  margin: 16px 24px 16px 28px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-logo {\n  width: 32px;\n  margin: 16px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-sider {\n  width: 224px;\n  background: #404040;\n  position: absolute;\n  overflow: visible;\n  padding-bottom: 24px;\n  height: 100%;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider {\n  width: 64px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu {\n  margin-bottom: 20px;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item {\n  margin: 16px 0;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item .nav-text {\n  vertical-align: baseline;\n  display: inline-block;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item > .anticon {\n  transition: font-size .3s;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item {\n  transition: all 0s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item > .anticon {\n  font-size: 16px;\n  display: inline-block;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item .nav-text {\n  display: none;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item:hover {\n  background: #2db7f5;\n  color: #fff;\n  transition: all 0s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item:hover .nav-text {\n  display: inline-block;\n  vertical-align: top;\n  background: #2db7f5;\n  color: #fff;\n  padding-right: 16px;\n  border-radius: 0 5px 5px 0;\n}\n\n/* 实际使用中需要改成 position: fixed */\n.ant-layout-aside .ant-aside-action {\n  height: 42px;\n  width: 224px;\n  position: absolute;\n  bottom: 0;\n  background: #656565;\n  color: #fff;\n  text-align: center;\n  line-height: 42px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-aside-action {\n  width: 64px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-header {\n  background: #fff;\n  height: 64px;\n  border-bottom: 1px solid #e9e9e9;\n}\n\n.ant-layout-aside .ant-layout-breadcrumb {\n  margin: 7px 0 -17px 24px;\n}\n\n.ant-layout-aside .ant-layout-main {\n  margin-left: 224px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-main {\n  margin-left: 64px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-container {\n  margin: 24px 16px;\n}\n\n.ant-layout-aside .ant-layout-content {\n  background: #fff;\n  padding: 24px;\n}\n\n.ant-layout-aside .ant-layout-footer {\n  height: 64px;\n  line-height: 64px;\n  text-align: center;\n  font-size: 12px;\n  color: #999;\n  background: #fff;\n  border-top: 1px solid #e9e9e9;\n  width: 100%;\n}", ""]);
+	exports.push([module.id, ".ant-layout-aside {\n  height: 100%;\n}\n\n.ant-layout-aside .custom-image {\n  display: block;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .custom-image {\n  width: 32px;\n  margin: 16px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-logo {\n  width: 150px;\n  height: 32px;\n  background: #333;\n  border-radius: 6px;\n  margin: 16px 24px 16px 28px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-logo {\n  width: 32px;\n  margin: 16px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-sider {\n  width: 224px;\n  background: #404040;\n  position: absolute;\n  overflow: visible;\n  padding-bottom: 24px;\n  height: 100%;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider {\n  width: 64px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu {\n  margin-bottom: 20px;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item {\n  margin: 16px 0;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item .nav-text {\n  vertical-align: baseline;\n  display: inline-block;\n}\n\n.ant-layout-aside .ant-layout-sider > .ant-menu > .ant-menu-item > .anticon {\n  transition: font-size .3s;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item {\n  transition: all 0s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item > .anticon {\n  font-size: 16px;\n  display: inline-block;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item .nav-text {\n  display: none;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item:hover {\n  background: #2db7f5;\n  color: #fff;\n  transition: all 0s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-sider > .ant-menu > .ant-menu-item:hover .nav-text {\n  display: inline-block;\n  vertical-align: top;\n  background: #2db7f5;\n  color: #fff;\n  padding-right: 16px;\n  border-radius: 0 5px 5px 0;\n}\n\n/* 实际使用中需要改成 position: fixed */\n.ant-layout-aside .ant-aside-action {\n  height: 42px;\n  width: 224px;\n  position: fixed;\n  bottom: 0;\n  background: #656565;\n  color: #fff;\n  text-align: center;\n  line-height: 42px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-aside-action {\n  width: 64px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-header {\n  background: #fff;\n  height: 64px;\n  border-bottom: 1px solid #e9e9e9;\n}\n\n.ant-layout-aside .ant-layout-breadcrumb {\n  margin: 7px 0 -17px 24px;\n}\n\n.ant-layout-aside .ant-layout-main {\n  margin-left: 224px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside-collapse .ant-layout-main {\n  margin-left: 64px;\n  transition: all 0.3s ease;\n}\n\n.ant-layout-aside .ant-layout-container {\n  margin: 24px 16px;\n}\n\n.ant-layout-aside .ant-layout-content {\n  background: #fff;\n  padding: 24px;\n}\n\n.ant-layout-aside .ant-layout-footer {\n  height: 64px;\n  line-height: 64px;\n  text-align: center;\n  font-size: 12px;\n  color: #999;\n  background: #fff;\n  border-top: 1px solid #e9e9e9;\n  width: 100%;\n}", ""]);
 
 	// exports
 
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "e397096da73740bd6f5b40629ab5fd1a.png";
 
 /***/ }
 /******/ ]);
