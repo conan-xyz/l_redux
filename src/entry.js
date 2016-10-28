@@ -20,7 +20,7 @@ import ReactDOM from 'react-dom';
 import { Menu, Breadcrumb, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import '../static/css/base.css';
-import Root from '../static/img/root.png';
+import RootIMG from '../static/img/root.png';
 
 const rootElement = document.getElementById('react-content');
 const SubMenu = Menu.SubMenu;
@@ -43,9 +43,7 @@ const App = React.createClass({
     return (
       <div className={collapse ? "ant-layout-aside ant-layout-aside-collapse" : "ant-layout-aside "}>
         <aside className="ant-layout-sider">
-          <div className="custom-image">
-            <img alt="image" width="48" height="48" src={Root} />
-          </div>
+          <div className="ant-layout-logo"></div>
           <Menu mode="inline" theme="dark" defaultSelectedKeys={['user']}>
             <Menu.Item key="user">
               <Icon type="user" /><span className="nav-text">导航一</span>
